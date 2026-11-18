@@ -7,6 +7,10 @@ import ToyContainer from "./ToyContainer";
 function App() {
   const [showForm, setShowForm] = useState(false);
 
+    // Removes the toy with this id from our list
+  function deleteToy(id) {
+    setToys(toys.filter((toy) => toy.id !== id));
+  }
   function handleClick() {
     setShowForm((showForm) => !showForm);
   }
@@ -19,6 +23,7 @@ function App() {
         <button onClick={handleClick}>Add a Toy</button>
       </div>
       <ToyContainer />
+      <ToyContainer toys={toys} onDeleteToy={deleteToy} />
     </>
   );
 }
